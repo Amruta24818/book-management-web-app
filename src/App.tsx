@@ -1,25 +1,24 @@
-import React from 'react';
-import './App.css';
-import logo from './logo.svg';
+import { ThemeProvider } from "@emotion/react";
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
+import { theme } from "./default/theme";
+import { Home } from "./pages/Home";
+import { Login } from "./pages/Login";
+import { Profile } from "./pages/Profile";
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <Routes>
+          <Route path="/Login" element={<Login />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 };
 
